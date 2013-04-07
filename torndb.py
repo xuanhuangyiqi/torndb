@@ -148,6 +148,7 @@ class Connection(object):
     # but for historical compatibility execute() must return lastrowid.
     def execute(self, query, *parameters):
         """Executes the given query, returning the lastrowid from the query."""
+        query = query.replace('%', '%%')
         return self.execute_lastrowid(query, *parameters)
 
     def execute_lastrowid(self, query, *parameters):
